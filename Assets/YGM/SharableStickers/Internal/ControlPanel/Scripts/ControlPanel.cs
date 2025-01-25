@@ -13,7 +13,8 @@ namespace YGM.SharableStickers
         #region Unity Event
         public void OnClickAddSticker()
         {
-            m_system.AddNewLocalSticker("test", Color.green);
+            var randomColor = Random.ColorHSV(0, 1, 0.7f, 0.7f, 0.8f, 0.8f, 0.7f, 0.7f);
+            m_system.AddNewLocalSticker("", randomColor);
         }
 
         public void OnClickSaveLocalStickers()
