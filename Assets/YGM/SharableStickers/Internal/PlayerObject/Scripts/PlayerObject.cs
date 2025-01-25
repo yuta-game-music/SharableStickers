@@ -16,7 +16,7 @@ namespace YGM.SharableStickers
 
         [UdonSynced, FieldChangeCallback(nameof(StickerStatus))]
         private string m_stickerStatus;
-        public string StickerStatus
+        internal string StickerStatus
         {
             get => m_stickerStatus;
             set
@@ -34,10 +34,7 @@ namespace YGM.SharableStickers
             return sticker;
         }
 
-        /// <summary>
-        /// 現状のステッカー状態をもとに状態テキストを作成します。
-        /// </summary>
-        private void UpdateStickerStatusText()
+        internal string GetStickerStatusText()
         {
             var stickers = new Sticker[m_stickerParent.childCount];
             for (var i = 0; i < stickers.Length; i++)
@@ -46,7 +43,15 @@ namespace YGM.SharableStickers
                 if (tf == null) continue;
                 stickers[i] = tf.GetComponent<Sticker>();
             }
-            m_stickerStatus = m_serializer.Serialize(Networking.GetOwner(gameObject), stickers);
+            return m_serializer.Serialize(Networking.GetOwner(gameObject), stickers);
+        }
+
+        /// <summary>
+        /// 現状のステッカー状態をもとに状態テキストを作成します。
+        /// </summary>
+        private void UpdateStickerStatusText()
+        {
+            m_stickerStatus = GetStickerStatusText();
             Log("Updated Sticker Status Text (Send   ): " + m_stickerStatus);
         }
 

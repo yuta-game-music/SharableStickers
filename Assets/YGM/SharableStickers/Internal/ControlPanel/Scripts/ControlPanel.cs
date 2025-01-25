@@ -15,6 +15,11 @@ namespace YGM.SharableStickers
         {
             m_system.AddNewLocalSticker("test", Color.green);
         }
+
+        public void OnClickSaveLocalStickers()
+        {
+            m_system.SaveLocalStickers();
+        }
         #endregion
     }
 

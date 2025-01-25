@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UdonSharp;
 using VRC.SDKBase;
+using VRC.SDK3.Persistence;
 
 namespace YGM.SharableStickers
 {
@@ -10,11 +11,7 @@ namespace YGM.SharableStickers
         [SerializeField] private ControlPanel m_controlPanel;
         [SerializeField] private PlayerObject m_playerObjectTemplate;
         [SerializeField] private StickerIdGenerator m_stickerIdGenerator;
-        public const char Delimiter = '$';
-        void Start()
-        {
-
-        }
+        public const string PersistenceSaveKey = "SharableStickers_LocalStickers";
 
         public PlayerObject GetPlayerObject(VRCPlayerApi player)
         {
@@ -33,5 +30,33 @@ namespace YGM.SharableStickers
             }
             playerObject.AddSticker(m_stickerIdGenerator.Generate(), content, color);
         }
+
+        public void SaveLocalStickers()
+        {
+            var playerObject = GetPlayerObject(LocalPlayer);
+            if (playerObject == null)
+            {
+                Log("Cannot find PlayerObject!");
+                return;
+            }
+            var latestStickerStatusText = playerObject.GetStickerStatusText();
+            PlayerData.SetString(PersistenceSaveKey, latestStickerStatusText);
+        }
+
+        #region VRChat Events
+        public override void OnPlayerRestored(VRCPlayerApi player)
+        {
+            if (player.isLocal)
+            {
+                var playerObject = GetPlayerObject(LocalPlayer);
+                if (playerObject == null)
+                {
+                    Log("Cannot find PlayerObject!");
+                    return;
+                }
+                playerObject.StickerStatus = PlayerData.GetString(LocalPlayer, PersistenceSaveKey);
+            }
+        }
+        #endregion
     }
 }
