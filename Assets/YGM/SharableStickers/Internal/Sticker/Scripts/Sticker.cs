@@ -6,6 +6,7 @@ using VRC.Udon;
 
 namespace YGM.SharableStickers
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Sticker : UdonSharpBehaviourWithUtils
     {
         private VRCPlayerApi m_owner;

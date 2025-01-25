@@ -7,6 +7,7 @@ using VRC.Udon;
 
 namespace YGM.SharableStickers
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class PlayerDataSerializer : UdonSharpBehaviourWithUtils
     {
         public const int DataVersion = 1;

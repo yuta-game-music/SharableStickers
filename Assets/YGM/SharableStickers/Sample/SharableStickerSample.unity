@@ -576,6 +576,11 @@ PrefabInstance:
       propertyPath: _syncMethod
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1824949360485467716, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3209627059262034194, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -654,6 +659,18 @@ PrefabInstance:
       propertyPath: _syncMethod
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7190002922328870801, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7190002922328870801, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+    - target: {fileID: 7364199305197466657, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7364199305197466657, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
