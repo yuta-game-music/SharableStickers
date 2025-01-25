@@ -596,6 +596,12 @@ MonoBehaviour:
     SerializedTypeNames:
     - VRC.Udon.UdonBehaviour
     - VRC.Udon.UdonBehaviour
+    - VRC.Udon.UdonBehaviour
+    - VRC.Udon.UdonBehaviour
+  - gameObject: {fileID: 2050742893}
+    ID: 15
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
   portraitCameraPositionOffset: {x: 0, y: 0, z: 0}
   portraitCameraRotationOffset: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   PlayerPersistence: []
@@ -615,6 +621,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2050742893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7146490763421349456, guid: 0e45337129ce0224e814ffe7bd439097,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610286657518134238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1610286657518134238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -623,6 +635,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 892941643518428787, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 892941643518428787, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
     - target: {fileID: 1517898936026072764, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: _syncMethod
@@ -705,6 +723,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3557548142675943750, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
+    - target: {fileID: 3714256512823490964, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3714256512823490964, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3849132979318495264, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -733,11 +761,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SharableStickerSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 5398621030734487193, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5499766690579733985, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 5499766690579733985, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+    - target: {fileID: 5787618882346592501, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5787618882346592501, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
     - target: {fileID: 6456271939212864999, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
