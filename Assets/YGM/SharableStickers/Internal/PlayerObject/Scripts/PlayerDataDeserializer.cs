@@ -10,6 +10,7 @@ namespace YGM.SharableStickers
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class PlayerDataDeserializer : UdonSharpBehaviourWithUtils
     {
+        [SerializeField] private PlayerHashGenerator m_playerHashGenerator;
         public bool Deserialize(string text, Transform stickerParent, Sticker stickerPrefab)
         {
             var succeeded = VRCJson.TryDeserializeFromJson(text, out var token);
@@ -43,7 +44,7 @@ namespace YGM.SharableStickers
                 Log("Cannot fetch playerHash!");
                 return false;
             }
-            var playerHash = ObjectOwner.displayName;
+            var playerHash = m_playerHashGenerator.GenerateHash(ObjectOwner);
             if (playerHashToken != playerHash)
             {
                 Log("Player Hash Mismatch!");

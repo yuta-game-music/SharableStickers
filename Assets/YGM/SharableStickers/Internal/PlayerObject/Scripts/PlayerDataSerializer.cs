@@ -10,10 +10,11 @@ namespace YGM.SharableStickers
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class PlayerDataSerializer : UdonSharpBehaviourWithUtils
     {
+        [SerializeField] private PlayerHashGenerator m_playerHashGenerator;
         public const int DataVersion = 1;
         internal string Serialize(VRCPlayerApi owner, Sticker[] stickers)
         {
-            var userHash = owner.displayName;
+            var userHash = m_playerHashGenerator.GenerateHash(owner);
             var dic = new DataDictionary();
             dic.Add("version", new DataToken(DataVersion));
             dic.Add("user", new DataToken(userHash));
