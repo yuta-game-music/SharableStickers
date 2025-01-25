@@ -39,7 +39,7 @@ namespace YGM.SharableStickers
                 randomValue -= int.MinValue;
             }
 
-            return $"{randomValue:X10}";
+            return $"{randomValue:X10}".Substring(0, 10);
         }
     }
 

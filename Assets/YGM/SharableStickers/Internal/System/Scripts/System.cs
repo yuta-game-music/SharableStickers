@@ -9,6 +9,7 @@ namespace YGM.SharableStickers
     {
         [SerializeField] private ControlPanel m_controlPanel;
         [SerializeField] private PlayerObject m_playerObjectTemplate;
+        [SerializeField] private StickerIdGenerator m_stickerIdGenerator;
         public const char Delimiter = '$';
         void Start()
         {
@@ -30,7 +31,7 @@ namespace YGM.SharableStickers
                 Log("Cannot find PlayerObject!");
                 return;
             }
-            playerObject.AddSticker("test", content, color);
+            playerObject.AddSticker(m_stickerIdGenerator.Generate(), content, color);
         }
     }
 }
