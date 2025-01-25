@@ -7,14 +7,9 @@ using VRC.Udon;
 namespace YGM.SharableStickers
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class ControlPanel : UdonSharpBehaviour
+    public class PlayerObject : UdonSharpBehaviour
     {
-        #region Unity Event
-        public void OnClickAddSticker()
-        {
 
-        }
-        #endregion
     }
 
 }
