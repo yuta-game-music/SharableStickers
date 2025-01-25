@@ -12,6 +12,7 @@ namespace YGM.SharableStickers
         [SerializeField] private Sticker m_stickerPrefab;
         [SerializeField] private Transform m_stickerParent;
         [SerializeField] private PlayerDataSerializer m_serializer;
+        [SerializeField] private PlayerDataDeserializer m_deserializer;
 
         [UdonSynced, FieldChangeCallback(nameof(StickerStatus))]
         private string m_stickerStatus;
@@ -55,6 +56,7 @@ namespace YGM.SharableStickers
         private void UpdateStickers()
         {
             Log("Updated Sticker Status Text (Receive): " + m_stickerStatus);
+            m_deserializer.Deserialize(m_stickerStatus, m_stickerParent, m_stickerPrefab);
         }
 
         private Sticker FindOrGenerateSticker(string stickerId)
