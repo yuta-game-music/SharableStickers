@@ -67,7 +67,10 @@ namespace YGM.SharableStickers
             }
             // 生成
             var stickerGameObject = Instantiate(m_stickerPrefab.gameObject, m_stickerParent, false);
-            return stickerGameObject.GetComponent<Sticker>();
+            stickerGameObject.name = name;
+            var sticker = stickerGameObject.GetComponent<Sticker>();
+            sticker.SetupAsLocal(ObjectOwner, stickerId, "", Color.white);
+            return sticker;
         }
 
         private string GetStickerGameObjectByStickerId(string stickerId)
