@@ -7,6 +7,7 @@ namespace YGM.SharableStickers
 {
     public abstract class UdonSharpBehaviourWithUtils : UdonSharpBehaviour
     {
+        protected VRCPlayerApi LocalPlayer => Networking.LocalPlayer;
         protected VRCPlayerApi ObjectOwner => Networking.GetOwner(gameObject);
         protected void Log(string text)
         {

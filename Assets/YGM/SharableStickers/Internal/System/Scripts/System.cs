@@ -24,7 +24,13 @@ namespace YGM.SharableStickers
 
         public void AddNewLocalSticker(string content, Color color)
         {
-
+            var playerObject = GetPlayerObject(LocalPlayer);
+            if (playerObject == null)
+            {
+                Log("Cannot find PlayerObject!");
+                return;
+            }
+            playerObject.AddSticker("test", content, color);
         }
     }
 }
