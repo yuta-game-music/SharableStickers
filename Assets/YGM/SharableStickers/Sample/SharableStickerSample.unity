@@ -229,6 +229,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &385362488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8337511000460558954, guid: 0e45337129ce0224e814ffe7bd439097,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610286657518134238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &526919351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3103798025574607041, guid: 0e45337129ce0224e814ffe7bd439097,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610286657518134238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &552124008
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +427,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1000631068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4272939269584655929, guid: 0e45337129ce0224e814ffe7bd439097,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610286657518134238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1066346139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1201447851440549083, guid: 0e45337129ce0224e814ffe7bd439097,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610286657518134238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1790946376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4917962481317064640, guid: 0e45337129ce0224e814ffe7bd439097,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610286657518134238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2027647268
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +573,28 @@ MonoBehaviour:
   RenderReflectionBounces: 0
   RenderReflectionIntensity: 0
   RenderSkybox: {fileID: 0}
-  NetworkIDs: []
+  NetworkIDs:
+  - gameObject: {fileID: 1790946376}
+    ID: 10
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
+  - gameObject: {fileID: 1066346139}
+    ID: 11
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
+  - gameObject: {fileID: 526919351}
+    ID: 12
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
+    - VRC.SDK3.Components.VRCPlayerObject
+  - gameObject: {fileID: 1000631068}
+    ID: 13
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
+  - gameObject: {fileID: 385362488}
+    ID: 14
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
   portraitCameraPositionOffset: {x: 0, y: 0, z: 0}
   portraitCameraRotationOffset: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   PlayerPersistence: []
@@ -671,6 +722,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7364199305197466657, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
+    - target: {fileID: 8362036860327687236, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
