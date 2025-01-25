@@ -26,6 +26,12 @@ namespace YGM.SharableStickers
             }
         }
 
+        internal void SetStickerStatus(string stickerStatus)
+        {
+            m_stickerStatus = stickerStatus;
+            UpdateStickers();
+        }
+
         internal Sticker AddSticker(string stickerId, string content, Color color)
         {
             var sticker = FindOrGenerateSticker(stickerId);

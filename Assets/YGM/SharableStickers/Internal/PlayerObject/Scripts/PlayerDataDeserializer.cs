@@ -20,14 +20,19 @@ namespace YGM.SharableStickers
                 return false;
             }
 
-            var versionFetchSucceeded = token.DataDictionary.TryGetValue("version", TokenType.Int, out var versionToken);
+            var versionFetchSucceeded = token.DataDictionary.TryGetValue("version", out var versionToken);
             if (!versionFetchSucceeded)
             {
-                Log("Connot fetch version!");
+                Log($"Cannot fetch version! ({versionToken.Error})");
+                return false;
+            }
+            if (!versionToken.IsNumber)
+            {
+                Log($"Cannot fetch version! (Type mismatch: {versionToken.TokenType})");
                 return false;
             }
 
-            switch (versionToken.Int)
+            switch ((int)versionToken.Number)
             {
                 case 1:
                     return DeserializeV1(token, stickerParent, stickerPrefab);
@@ -93,10 +98,10 @@ namespace YGM.SharableStickers
                 }
                 var stickerContent = stickerContentToken.String;
 
-                var stickerColorFetchResult = token.DataDictionary.TryGetValue("color", TokenType.String, out var stickerColorToken);
+                var stickerColorFetchResult = token.DataDictionary.TryGetValue("color", TokenType.DataDictionary, out var stickerColorToken);
                 if (!stickerColorFetchResult)
                 {
-                    Log("Cannot fetch Sticker Color!");
+                    Log($"Cannot fetch Sticker Color! ({stickerColorToken.ToString()})");
                     return false;
                 }
 
@@ -168,37 +173,37 @@ namespace YGM.SharableStickers
         {
             color = Color.black;
 
-            var stickerColorRedFetchResult = stickerColor.TryGetValue("r", TokenType.Float, out var stickerColorRedToken);
+            var stickerColorRedFetchResult = stickerColor.TryGetValue("r", out var stickerColorRedToken);
             if (!stickerColorRedFetchResult)
             {
                 Log("Cannot fetch Sticker Color (Red)!");
                 return false;
             }
-            color.r = stickerColorRedToken.Float;
+            color.r = (float)stickerColorRedToken.Number;
 
-            var stickerColorGreenFetchResult = stickerColor.TryGetValue("g", TokenType.Float, out var stickerColorGreenToken);
+            var stickerColorGreenFetchResult = stickerColor.TryGetValue("g", out var stickerColorGreenToken);
             if (!stickerColorGreenFetchResult)
             {
                 Log("Cannot fetch Sticker Color (Green)!");
                 return false;
             }
-            color.g = stickerColorGreenToken.Float;
+            color.g = (float)stickerColorGreenToken.Number;
 
-            var stickerColorBlueFetchResult = stickerColor.TryGetValue("b", TokenType.Float, out var stickerColorBlueToken);
+            var stickerColorBlueFetchResult = stickerColor.TryGetValue("b", out var stickerColorBlueToken);
             if (!stickerColorBlueFetchResult)
             {
                 Log("Cannot fetch Sticker Color (Blue)!");
                 return false;
             }
-            color.b = stickerColorBlueToken.Float;
+            color.b = (float)stickerColorBlueToken.Number;
 
-            var stickerColorAlphaFetchResult = stickerColor.TryGetValue("a", TokenType.Float, out var stickerColorAlphaToken);
+            var stickerColorAlphaFetchResult = stickerColor.TryGetValue("a", out var stickerColorAlphaToken);
             if (!stickerColorAlphaFetchResult)
             {
                 Log("Cannot fetch Sticker Color (Alpha)!");
                 return false;
             }
-            color.a = stickerColorAlphaToken.Float;
+            color.a = (float)stickerColorAlphaToken.Number;
 
             return true;
         }

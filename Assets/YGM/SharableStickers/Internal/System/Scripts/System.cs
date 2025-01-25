@@ -54,7 +54,9 @@ namespace YGM.SharableStickers
                     Log("Cannot find PlayerObject!");
                     return;
                 }
-                playerObject.StickerStatus = PlayerData.GetString(LocalPlayer, PersistenceSaveKey);
+                var status = PlayerData.GetString(LocalPlayer, PersistenceSaveKey);
+                Log("Restored status " + status);
+                playerObject.SetStickerStatus(status);
             }
         }
         #endregion
