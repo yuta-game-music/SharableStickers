@@ -32,7 +32,7 @@ namespace YGM.SharableStickers
             UpdateStickers();
         }
 
-        internal Sticker AddSticker(string stickerId, string content, Color color)
+        internal Sticker SetSticker(string stickerId, string content, Color color)
         {
             var sticker = FindOrGenerateSticker(stickerId);
             sticker.SetData(content, color);
@@ -72,18 +72,28 @@ namespace YGM.SharableStickers
 
         private Sticker FindOrGenerateSticker(string stickerId)
         {
+            var sticker = FindSticker(stickerId);
+            if (sticker != null)
+            {
+                return sticker;
+            }
+            // 生成
+            var stickerGameObject = Instantiate(m_stickerPrefab.gameObject, m_stickerParent, false);
+            stickerGameObject.name = name;
+            sticker = stickerGameObject.GetComponent<Sticker>();
+            sticker.SetupAsLocal(ObjectOwner, stickerId, "", Color.white);
+            return sticker;
+        }
+
+        private Sticker FindSticker(string stickerId)
+        {
             var name = GetStickerGameObjectByStickerId(stickerId);
             var tf = m_stickerParent.Find(name);
             if (tf != null)
             {
                 return tf.GetComponent<Sticker>();
             }
-            // 生成
-            var stickerGameObject = Instantiate(m_stickerPrefab.gameObject, m_stickerParent, false);
-            stickerGameObject.name = name;
-            var sticker = stickerGameObject.GetComponent<Sticker>();
-            sticker.SetupAsLocal(ObjectOwner, stickerId, "", Color.white);
-            return sticker;
+            return null;
         }
 
         private string GetStickerGameObjectByStickerId(string stickerId)

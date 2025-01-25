@@ -28,7 +28,18 @@ namespace YGM.SharableStickers
                 Log("Cannot find PlayerObject!");
                 return;
             }
-            playerObject.AddSticker(m_stickerIdGenerator.Generate(), content, color);
+            playerObject.SetSticker(m_stickerIdGenerator.Generate(), content, color);
+        }
+
+        public void UpdateLocalSticker(string stickerId, string content, Color color)
+        {
+            var playerObject = GetPlayerObject(LocalPlayer);
+            if (playerObject == null)
+            {
+                Log("Cannot find PlayerObject!");
+                return;
+            }
+            playerObject.SetSticker(stickerId, content, color);
         }
 
         public void SaveLocalStickers()
