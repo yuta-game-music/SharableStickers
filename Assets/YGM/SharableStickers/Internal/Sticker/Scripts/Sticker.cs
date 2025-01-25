@@ -9,6 +9,7 @@ namespace YGM.SharableStickers
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Sticker : UdonSharpBehaviourWithUtils
     {
+        [SerializeField] private StickerView m_stickerView;
         private VRCPlayerApi m_owner;
         private bool m_hasOwner; // ダウンロードして生成したStickerはfalseになっている
 
@@ -27,12 +28,19 @@ namespace YGM.SharableStickers
             m_stickerId = stickerId;
             m_content = content;
             m_color = color;
+            UpdateStickerView();
         }
 
         internal void SetData(string content, Color color)
         {
             m_content = content;
             m_color = color;
+            UpdateStickerView();
+        }
+
+        private void UpdateStickerView()
+        {
+            m_stickerView.SetData(m_content, m_color);
         }
     }
 
