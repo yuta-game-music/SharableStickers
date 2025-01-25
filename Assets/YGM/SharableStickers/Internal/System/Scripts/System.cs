@@ -5,10 +5,11 @@ using VRC.SDKBase;
 namespace YGM.SharableStickers
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class System : UdonSharpBehaviour
+    public class System : UdonSharpBehaviourWithUtils
     {
         [SerializeField] private ControlPanel m_controlPanel;
         [SerializeField] private PlayerObject m_playerObjectTemplate;
+        public const char Delimiter = '$';
         void Start()
         {
 
@@ -19,6 +20,11 @@ namespace YGM.SharableStickers
             var component = Networking.FindComponentInPlayerObjects(player, m_playerObjectTemplate);
             if (component == null) return null;
             return (PlayerObject)component;
+        }
+
+        public void AddNewLocalSticker(string content, Color color)
+        {
+
         }
     }
 }
