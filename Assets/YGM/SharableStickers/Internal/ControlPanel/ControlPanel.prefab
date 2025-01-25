@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 4288644249297939161}
   - component: {fileID: 5788532989246439841}
   - component: {fileID: 3111593029006558401}
-  m_Layer: 5
+  - component: {fileID: 3382575913829689316}
+  - component: {fileID: 5472338446486581382}
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,6 +106,40 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!65 &3382575913829689316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245198324816204443}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 600, y: 400, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5472338446486581382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245198324816204443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1533785930, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllowFocusView: 1
 --- !u!1 &711214798337292276
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +151,7 @@ GameObject:
   - component: {fileID: 829574748439390417}
   - component: {fileID: 6849716285932683817}
   - component: {fileID: 2433689915244383068}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8696403632366538860}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 101079371928929055}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: AddSticker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +299,7 @@ GameObject:
   - component: {fileID: 1584412115479488487}
   - component: {fileID: 8352276933439709337}
   - component: {fileID: 1288369280879639820}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +378,7 @@ GameObject:
   - component: {fileID: 2063790173742168487}
   - component: {fileID: 5966051283119531099}
   - component: {fileID: 7994845897958798148}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2430034262605661513}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +575,7 @@ GameObject:
   - component: {fileID: 5662248881647715341}
   - component: {fileID: 5531568372470898347}
   - component: {fileID: 9212978408794896278}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +655,7 @@ GameObject:
   - component: {fileID: 26766826031403116}
   - component: {fileID: 373848268653720661}
   - component: {fileID: 8978552386725300380}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
