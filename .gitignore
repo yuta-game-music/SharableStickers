@@ -65,3 +65,6 @@ crashlytics-build.properties
 
 # Release files
 /Release/
+
+# VRChat Generated File
+/ClientSimStorage/
