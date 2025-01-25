@@ -423,6 +423,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1517898936026072764, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3209627059262034194, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -436,7 +441,7 @@ PrefabInstance:
     - target: {fileID: 3209627059262034194, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3209627059262034194, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
@@ -473,10 +478,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3849132979318495264, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3849132979318495264, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+    - target: {fileID: 4345413340677537766, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4345413340677537766, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+    - target: {fileID: 4478924166788448148, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4478924166788448148, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
     - target: {fileID: 4917962481317064640, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: m_Name
       value: SharableStickerSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519172231085060419, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
