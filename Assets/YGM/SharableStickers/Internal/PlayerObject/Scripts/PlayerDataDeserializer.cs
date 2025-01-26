@@ -90,28 +90,69 @@ namespace YGM.SharableStickers
                 }
                 var stickerId = stickerIdToken.String;
 
+                string stickerContent;
                 var stickerContentFetchResult = token.DataDictionary.TryGetValue("content", TokenType.String, out var stickerContentToken);
-                if (!stickerContentFetchResult)
+                if (stickerContentFetchResult)
                 {
-                    Log("Cannot fetch Sticker Content!");
-                    return false;
+                    stickerContent = stickerContentToken.String;
                 }
-                var stickerContent = stickerContentToken.String;
+                else
+                {
+                    Log("Cannot fetch Sticker Content! Falling back to empty");
+                    stickerContent = string.Empty;
+                }
 
+                Color stickerColor;
                 var stickerColorFetchResult = token.DataDictionary.TryGetValue("color", TokenType.DataDictionary, out var stickerColorToken);
-                if (!stickerColorFetchResult)
+                if (stickerColorFetchResult)
                 {
-                    Log($"Cannot fetch Sticker Color! ({stickerColorToken.ToString()})");
-                    return false;
+                    var stickerColorInternalParseResult = TryFetchColor(stickerColorToken.DataDictionary, out stickerColor);
+                    if (!stickerColorInternalParseResult)
+                    {
+                        Log("Error while parsing Sticker Color! Falling back to white");
+                        stickerColor = Color.white;
+                    }
+                }
+                else
+                {
+                    Log($"Cannot fetch Sticker Color! Falling back to white");
+                    stickerColor = Color.white;
                 }
 
-                var stickerColorInternalParseResult = TryFetchColor(stickerColorToken.DataDictionary, out var stickerColor);
-                if (!stickerColorInternalParseResult)
+                Vector3 stickerPosition;
+                var stickerPositionFetchResult = token.DataDictionary.TryGetValue("position", TokenType.DataDictionary, out var stickerPositionToken);
+                if (stickerPositionFetchResult)
                 {
-                    Log("Error while parsing Sticker Color!");
-                    return false;
+                    var stickerPositionInternalParseResult = TryFetchVector3(stickerPositionToken.DataDictionary, out stickerPosition);
+                    if (!stickerPositionInternalParseResult)
+                    {
+                        Log("Error while parsing Sticker Position! Falling back to zero");
+                        stickerPosition = Vector3.zero;
+                    }
+                }
+                else
+                {
+                    Log($"Cannot fetch Sticker Position! Falling back to zero");
+                    stickerPosition = Vector3.zero;
                 }
 
+                Vector3 stickerRotation;
+                var stickerRotationFetchResult = token.DataDictionary.TryGetValue("rotation", TokenType.DataDictionary, out var stickerRotationToken);
+                if (stickerRotationFetchResult)
+                {
+                    var stickerRotationInternalParseResult = TryFetchVector3(stickerRotationToken.DataDictionary, out stickerRotation);
+                    if (!stickerRotationInternalParseResult)
+                    {
+                        Log("Error while parsing Sticker Rotation! Falling back to zero");
+                        stickerRotation = Vector3.zero;
+                    }
+                }
+                else
+                {
+                    Log($"Cannot fetch Sticker Rotation! Falling back to zero");
+                    stickerRotation = Vector3.zero;
+                }
+                var stickerRotationAsQuaternion = Quaternion.Euler(stickerRotation);
                 #endregion
                 // 既存のものを探す
                 var index = -1;
@@ -136,7 +177,7 @@ namespace YGM.SharableStickers
                         return false;
                     }
 
-                    sticker.SetData(stickerContent, stickerColor);
+                    sticker.SetData(stickerContent, stickerColor, stickerPosition, stickerRotationAsQuaternion);
                 }
                 else
                 {
@@ -149,7 +190,7 @@ namespace YGM.SharableStickers
                         Log("Sticker generation failed!");
                         return false;
                     }
-                    stickerComponent.SetupAsLocal(ObjectOwner, stickerId, stickerContent, stickerColor);
+                    stickerComponent.SetupAsLocal(ObjectOwner, stickerId, stickerContent, stickerColor, stickerPosition, stickerRotationAsQuaternion);
 
                     var editableStickerComponent = newStickerGameObject.GetComponent<EditableSticker>();
                     if (editableStickerComponent != null)
@@ -215,6 +256,36 @@ namespace YGM.SharableStickers
             return true;
         }
 
+        private bool TryFetchVector3(DataDictionary vectorDict, out Vector3 vector)
+        {
+            vector = Vector3.zero;
+
+            var vectorDictXFetchResult = vectorDict.TryGetValue("x", out var vectorDictXToken);
+            if (!vectorDictXFetchResult)
+            {
+                Log("Cannot fetch vector (x)!");
+                return false;
+            }
+            vector.x = (float)vectorDictXToken.Number;
+
+            var vectorDictYFetchResult = vectorDict.TryGetValue("y", out var vectorDictYToken);
+            if (!vectorDictYFetchResult)
+            {
+                Log("Cannot fetch vector (y)!");
+                return false;
+            }
+            vector.y = (float)vectorDictYToken.Number;
+
+            var vectorDictZFetchResult = vectorDict.TryGetValue("z", out var vectorDictZToken);
+            if (!vectorDictZFetchResult)
+            {
+                Log("Cannot fetch vector (z)!");
+                return false;
+            }
+            vector.z = (float)vectorDictZToken.Number;
+
+            return true;
+        }
         private string GetStickerGameObjectByStickerId(string stickerId)
         {
             return "Sticker_" + stickerId;

@@ -20,15 +20,21 @@ namespace YGM.SharableStickers
 
         private string m_previousContent;
         private Color m_previousColor;
+        private Vector3 m_previousPosition;
+        private Quaternion m_previousRotation;
         private Color m_color;
 
         private string Content => m_inputField.text;
         private Color Color => m_color;
+        private Vector3 Position => transform.position;
+        private Quaternion Rotation => transform.rotation;
 
         internal void Setup(
             string stickerId,
             string content,
             Color color,
+            Vector3 position,
+            Quaternion rotation,
             System system,
             UdonSharpBehaviour eventListener,
             string onCloseEventName)
@@ -39,6 +45,8 @@ namespace YGM.SharableStickers
             m_onCloseEventName = onCloseEventName;
             m_inputField.text = m_previousContent = content;
             m_color = m_previousColor = color;
+            transform.position = m_previousPosition = position;
+            transform.rotation = m_previousRotation = rotation;
             gameObject.SetActive(true);
         }
 
@@ -71,10 +79,19 @@ namespace YGM.SharableStickers
             SendCustomEventIfValid(m_eventListener, m_onCloseEventName);
         }
 
+        private bool IsEdit()
+        {
+            if (Color != m_previousColor) return true;
+            if (Content != m_previousContent) return true;
+            if (Position != m_previousPosition) return true;
+            if (Rotation != m_previousRotation) return true;
+            return false;
+        }
+
         #region Unity Event
         public void OnClickCancel()
         {
-            if (Color == m_previousColor && Content == m_previousContent)
+            if (!IsEdit())
             {
                 Close();
             }
@@ -89,7 +106,7 @@ namespace YGM.SharableStickers
 
         public void OnClickEnter()
         {
-            m_system.UpdateLocalSticker(m_stickerId, Content, Color);
+            m_system.UpdateLocalSticker(m_stickerId, Content, Color, Position, Rotation);
             Close();
         }
         #endregion

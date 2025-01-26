@@ -36,10 +36,10 @@ namespace YGM.SharableStickers
             UpdateStickers();
         }
 
-        internal Sticker SetSticker(string stickerId, string content, Color color)
+        internal Sticker SetSticker(string stickerId, string content, Color color, Vector3 position, Quaternion rotation)
         {
             var sticker = FindOrGenerateSticker(stickerId);
-            sticker.SetData(content, color);
+            sticker.SetData(content, color, position, rotation);
             UpdateStickerStatusText();
             return sticker;
         }
@@ -85,7 +85,7 @@ namespace YGM.SharableStickers
             var stickerGameObject = Instantiate(StickerPrefab.gameObject, m_stickerParent, false);
             stickerGameObject.name = name;
             sticker = stickerGameObject.GetComponent<Sticker>();
-            sticker.SetupAsLocal(ObjectOwner, stickerId, "", Color.white);
+            sticker.SetupAsLocal(ObjectOwner, stickerId, "", Color.white, new Vector3(0, 1, 0), Quaternion.identity);
             if (IsLocalObject)
             {
                 var editableSticker = stickerGameObject.GetComponent<EditableSticker>();

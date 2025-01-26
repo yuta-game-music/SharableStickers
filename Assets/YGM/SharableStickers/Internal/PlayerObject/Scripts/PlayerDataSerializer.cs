@@ -35,6 +35,8 @@ namespace YGM.SharableStickers
             dic.Add("id", new DataToken(sticker.StickerId));
             dic.Add("content", new DataToken(sticker.Content));
             dic.Add("color", GetColorToken(sticker.Color));
+            dic.Add("position", GetVector3Token(sticker.Position));
+            dic.Add("rotation", GetVector3Token(sticker.Rotation.eulerAngles));
             return dic;
         }
         private DataToken GetColorToken(Color color)
@@ -44,6 +46,14 @@ namespace YGM.SharableStickers
             dic.Add("g", new DataToken(color.g));
             dic.Add("b", new DataToken(color.b));
             dic.Add("a", new DataToken(color.a));
+            return dic;
+        }
+        private DataToken GetVector3Token(Vector3 vec)
+        {
+            var dic = new DataDictionary();
+            dic.Add("x", new DataToken(vec.x));
+            dic.Add("y", new DataToken(vec.y));
+            dic.Add("z", new DataToken(vec.z));
             return dic;
         }
     }

@@ -20,21 +20,27 @@ namespace YGM.SharableStickers
         public string StickerId => m_stickerId;
         public string Content => m_content;
         public Color Color => m_color;
+        public Vector3 Position => transform.position;
+        public Quaternion Rotation => transform.rotation;
 
-        internal void SetupAsLocal(VRCPlayerApi owner, string stickerId, string content, Color color)
+        internal void SetupAsLocal(VRCPlayerApi owner, string stickerId, string content, Color color, Vector3 position, Quaternion rotation)
         {
             m_hasOwner = true;
             m_owner = owner;
             m_stickerId = stickerId;
             m_content = content;
             m_color = color;
+            transform.position = position;
+            transform.rotation = rotation;
             UpdateStickerView();
         }
 
-        internal void SetData(string content, Color color)
+        internal void SetData(string content, Color color, Vector3 position, Quaternion rotation)
         {
             m_content = content;
             m_color = color;
+            transform.position = position;
+            transform.rotation = rotation;
             UpdateStickerView();
         }
 

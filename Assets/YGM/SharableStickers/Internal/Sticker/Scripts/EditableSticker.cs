@@ -12,7 +12,7 @@ namespace YGM.SharableStickers
 
         /// <summary>
         /// 編集可能なステッカーオブジェクトを設定します。
-        /// 別途、<see cref="Sticker.SetupAsLocal(VRCPlayerApi, string, string, Color)"/>を呼んで下さい。 
+        /// 別途、<see cref="Sticker.SetupAsLocal(VRCPlayerApi, string, string, Color, Vector3, Quaternion)"/>を呼んで下さい。 
         /// </summary>
         /// <param name="system"></param>
         public void SetupAsEditable(System system)
