@@ -16,6 +16,7 @@ namespace YGM.SharableStickers
         [SerializeField] private RectTransform m_contentTransform;
         [SerializeField] private Vector2 m_contentMargin;
         [SerializeField] private Vector2 m_canvasMinSize;
+        [SerializeField] private CanvasGroup m_mainCanvasGroup;
 
         private bool m_waitSizeChangeFlag = false;
         internal void SetData(string text, Color color)
@@ -50,6 +51,18 @@ namespace YGM.SharableStickers
                 preferredSize.y = Mathf.Max(preferredSize.y, m_canvasMinSize.y);
                 m_canvasTransform.sizeDelta = preferredSize;
             }
+        }
+
+        /// <summary>
+        /// 編集中かどうかに基づいて表示・非表示を切り替える。
+        /// 編集し始めるときにtrueで、終わったらfalseで呼ぶ。
+        /// </summary>
+        /// <param name="visible"></param>
+        internal void SetVisibleByEditing(bool visible)
+        {
+            m_mainCanvasGroup.alpha = visible ? 1 : 0;
+            m_mainCanvasGroup.interactable = visible;
+            m_mainCanvasGroup.blocksRaycasts = visible;
         }
     }
 

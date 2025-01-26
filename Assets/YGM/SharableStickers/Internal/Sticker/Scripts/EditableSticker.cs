@@ -20,14 +20,21 @@ namespace YGM.SharableStickers
             m_system = system;
         }
 
+        private void SetEditingMode(bool isEditing)
+        {
+            m_stickerView.SetVisibleByEditing(!isEditing);
+        }
+
         public void OnPlacedByNewStickerButton()
         {
             m_system.ShowStickerEditorForLocal(StickerId, StickerEditorViewMode.Move, this, nameof(OnFinishEdit));
+            SetEditingMode(true);
         }
 
         #region StickerEditor Callback
         public void OnFinishEdit()
         {
+            SetEditingMode(false);
         }
         #endregion
 
@@ -35,6 +42,7 @@ namespace YGM.SharableStickers
         public void OnClickEditButton()
         {
             m_system.ShowStickerEditorForLocal(StickerId, StickerEditorViewMode.Top, this, nameof(OnFinishEdit));
+            SetEditingMode(true);
         }
         #endregion
     }
