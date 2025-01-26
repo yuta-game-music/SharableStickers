@@ -68,18 +68,6 @@ namespace YGM.SharableStickers
             playerObject.SetSticker(stickerId, content, color, position, rotation);
         }
 
-        public void SaveLocalStickers()
-        {
-            var playerObject = GetPlayerObject(LocalPlayer);
-            if (playerObject == null)
-            {
-                Log("Cannot find PlayerObject!");
-                return;
-            }
-            var latestStickerStatusText = playerObject.GetStickerStatusText();
-            PlayerData.SetString(PersistenceSaveKey, latestStickerStatusText);
-        }
-
         #region VRChat Events
         public override void OnPlayerRestored(VRCPlayerApi player)
         {

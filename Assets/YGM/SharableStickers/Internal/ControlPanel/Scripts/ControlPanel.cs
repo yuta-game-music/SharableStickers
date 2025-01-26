@@ -19,11 +19,6 @@ namespace YGM.SharableStickers
             var playerFaceRotation = playerTrackingData.rotation;
             m_system.AddNewLocalSticker("", randomColor, playerFrontPosition, playerFaceRotation);
         }
-
-        public void OnClickSaveLocalStickers()
-        {
-            m_system.SaveLocalStickers();
-        }
         #endregion
     }
 

@@ -10,6 +10,7 @@ namespace YGM.SharableStickers
         protected VRCPlayerApi LocalPlayer => Networking.LocalPlayer;
         protected VRCPlayerApi ObjectOwner => Networking.GetOwner(gameObject);
         protected bool IsLocalObject => LocalPlayer != null && GetPlayerId(LocalPlayer) == GetPlayerId(ObjectOwner);
+        protected bool IsObjectOwnerMatch(VRCPlayerApi player) => player != null && ObjectOwner != null && ObjectOwner.playerId == player.playerId;
         protected void SendCustomEventIfValid(UdonSharpBehaviour eventListener, string eventName)
         {
             if (eventListener == null) return;
