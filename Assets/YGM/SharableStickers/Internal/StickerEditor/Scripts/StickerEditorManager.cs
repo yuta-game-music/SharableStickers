@@ -77,7 +77,7 @@ namespace YGM.SharableStickers
             }
         }
 
-        private void OnCloseEditor()
+        public void OnCloseEditor()
         {
             // Closeされているエディタ数が規定数を超えていたら削除する
             var currentClosedEditorCount = 0;

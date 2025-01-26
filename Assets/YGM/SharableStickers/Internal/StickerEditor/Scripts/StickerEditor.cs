@@ -51,23 +51,23 @@ namespace YGM.SharableStickers
         }
 
         #region Color Picker Callback
-        private void OnEnterColor()
+        public void OnEnterColor()
         {
             m_color = m_colorPicker.Color;
         }
 
-        private void OnCancelColorPicker()
+        public void OnCancelColorPicker()
         {
 
         }
         #endregion
 
         #region NoEditConfirmDialog Callback
-        private void OnSelectCloseNoEditConfirm()
+        public void OnSelectCloseNoEditConfirm()
         {
             Close();
         }
-        private void OnSelectDontCloseNoEditConfirm()
+        public void OnSelectDontCloseNoEditConfirm()
         {
 
         }
@@ -94,6 +94,7 @@ namespace YGM.SharableStickers
             if (!IsEdit())
             {
                 Close();
+                return;
             }
             m_noEditConfirmDialog.ShowDialog(this, nameof(OnSelectCloseNoEditConfirm), nameof(OnSelectDontCloseNoEditConfirm));
         }

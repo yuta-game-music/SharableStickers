@@ -7,6 +7,7 @@ using VRC.Udon;
 
 namespace YGM.SharableStickers
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ColorPicker : UdonSharpBehaviourWithUtils
     {
         [SerializeField] private ColorPickerSlider m_redSlider;
@@ -36,11 +37,14 @@ namespace YGM.SharableStickers
             m_previewer.color = m_color;
         }
 
-        private void OnValueUpdated()
+        #region UdonSharp Event
+        public void OnValueUpdated()
         {
             m_color = new Color(m_redSlider.Value, m_greenSlider.Value, m_blueSlider.Value, m_alphaSlider.Value);
+            Log($"UpdatePreviewersColor({m_color})");
             m_previewer.color = m_color;
         }
+        #endregion
 
         #region Unity Event
         public void OnEnter()
