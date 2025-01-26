@@ -70,7 +70,7 @@ namespace YGM.SharableStickers
             m_deserializer.Deserialize(m_stickerStatus, m_stickerParent, m_stickerPrefab);
         }
 
-        private Sticker FindOrGenerateSticker(string stickerId)
+        internal Sticker FindOrGenerateSticker(string stickerId)
         {
             var sticker = FindSticker(stickerId);
             if (sticker != null)
@@ -85,7 +85,7 @@ namespace YGM.SharableStickers
             return sticker;
         }
 
-        private Sticker FindSticker(string stickerId)
+        internal Sticker FindSticker(string stickerId)
         {
             var name = GetStickerGameObjectByStickerId(stickerId);
             var tf = m_stickerParent.Find(name);

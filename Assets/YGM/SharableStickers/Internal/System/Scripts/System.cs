@@ -11,6 +11,8 @@ namespace YGM.SharableStickers
         [SerializeField] private ControlPanel m_controlPanel;
         [SerializeField] private PlayerObject m_playerObjectTemplate;
         [SerializeField] private StickerIdGenerator m_stickerIdGenerator;
+        [SerializeField] private StickerEditor m_stickerEditor;
+
         public const string PersistenceSaveKey = "SharableStickers_LocalStickers";
 
         public PlayerObject GetPlayerObject(VRCPlayerApi player)
@@ -29,6 +31,27 @@ namespace YGM.SharableStickers
                 return;
             }
             playerObject.SetSticker(m_stickerIdGenerator.Generate(), content, color);
+        }
+
+        public StickerEditor ShowStickerEditorForLocal(string stickerId)
+        {
+            var playerObject = GetPlayerObject(LocalPlayer);
+            if (playerObject == null)
+            {
+                Log("Cannot find PlayerObject!");
+                return null;
+            }
+            var sticker = playerObject.FindOrGenerateSticker(stickerId);
+
+            var stickerEditorGameObject = Instantiate(m_stickerEditor.gameObject, transform, false);
+            var stickerEditor = stickerEditorGameObject.GetComponent<StickerEditor>();
+            stickerEditor.Setup(
+                stickerId,
+                sticker.Content,
+                sticker.Color,
+                this
+            );
+            return stickerEditor;
         }
 
         public void UpdateLocalSticker(string stickerId, string content, Color color)
