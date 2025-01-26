@@ -24,7 +24,7 @@ namespace YGM.SharableStickers
             set
             {
                 m_stickerStatus = value;
-                UpdateStickers();
+                SendCustomEventDelayedFrames(nameof(UpdateStickers), 1);
             }
         }
 
