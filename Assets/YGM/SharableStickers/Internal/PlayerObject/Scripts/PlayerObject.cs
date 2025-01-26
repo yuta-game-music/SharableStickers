@@ -6,7 +6,7 @@ using VRC.Udon;
 
 namespace YGM.SharableStickers
 {
-    [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class PlayerObject : UdonSharpBehaviourWithUtils
     {
         [SerializeField] private EditableSticker m_localStickerPrefab;
@@ -34,6 +34,7 @@ namespace YGM.SharableStickers
         {
             m_stickerStatus = stickerStatus;
             UpdateStickers();
+            RequestSerialization();
         }
 
         internal Sticker SetSticker(string stickerId, string content, Color color, Vector3 position, Quaternion rotation)
@@ -63,6 +64,7 @@ namespace YGM.SharableStickers
         {
             m_stickerStatus = GetStickerStatusText();
             Log("Updated Sticker Status Text (Send   ): " + m_stickerStatus);
+            RequestSerialization();
         }
 
         /// <summary>
