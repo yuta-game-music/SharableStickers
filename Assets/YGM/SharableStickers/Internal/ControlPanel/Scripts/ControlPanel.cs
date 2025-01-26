@@ -10,14 +10,12 @@ namespace YGM.SharableStickers
     public class ControlPanel : UdonSharpBehaviourWithUtils
     {
         [SerializeField] private System m_system;
+        [SerializeField] private Transform m_newStickerPosition;
         #region Unity Event
         public void OnClickAddSticker()
         {
             var randomColor = Random.ColorHSV(0, 1, 0.7f, 0.7f, 0.8f, 0.8f, 0.7f, 0.7f);
-            var playerTrackingData = LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head);
-            var playerFrontPosition = playerTrackingData.position + playerTrackingData.rotation * new Vector3(0, -0.5f, 1f);
-            var playerFaceRotation = playerTrackingData.rotation;
-            m_system.AddNewLocalSticker("", randomColor, playerFrontPosition, playerFaceRotation);
+            m_system.AddNewLocalSticker("", randomColor, m_newStickerPosition.position, m_newStickerPosition.rotation);
         }
         #endregion
     }
