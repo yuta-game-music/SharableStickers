@@ -37,18 +37,12 @@ namespace YGM.SharableStickers
         #region Unity Event
         public void OnClickYes()
         {
-            if (m_eventListener != null && !string.IsNullOrEmpty(m_onYesEventName))
-            {
-                m_eventListener.SendCustomEvent(m_onYesEventName);
-            }
+            SendCustomEventIfValid(m_eventListener, m_onYesEventName);
             gameObject.SetActive(false);
         }
         public void OnClickNo()
         {
-            if (m_eventListener != null && !string.IsNullOrEmpty(m_onNoEventName))
-            {
-                m_eventListener.SendCustomEvent(m_onNoEventName);
-            }
+            SendCustomEventIfValid(m_eventListener, m_onNoEventName);
             gameObject.SetActive(false);
         }
         #endregion

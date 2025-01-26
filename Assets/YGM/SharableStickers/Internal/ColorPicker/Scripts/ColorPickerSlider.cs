@@ -34,10 +34,7 @@ namespace YGM.SharableStickers
         public void OnSliderValueChanged()
         {
             UpdateView();
-            if (m_eventListener != null && !string.IsNullOrEmpty(m_onValueChangeEventName))
-            {
-                m_eventListener.SendCustomEvent(m_onValueChangeEventName);
-            }
+            SendCustomEventIfValid(m_eventListener, m_onValueChangeEventName);
         }
         #endregion
     }

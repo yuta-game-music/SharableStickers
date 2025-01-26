@@ -45,20 +45,12 @@ namespace YGM.SharableStickers
         #region Unity Event
         public void OnEnter()
         {
-            if (m_eventListener == null || string.IsNullOrEmpty(m_onEnterEventName))
-            {
-                return;
-            }
-            m_eventListener.SendCustomEvent(m_onEnterEventName);
+            SendCustomEventIfValid(m_eventListener, m_onEnterEventName);
             gameObject.SetActive(false);
         }
         public void OnCancel()
         {
-            if (m_eventListener == null || string.IsNullOrEmpty(m_onCancelEventName))
-            {
-                return;
-            }
-            m_eventListener.SendCustomEvent(m_onCancelEventName);
+            SendCustomEventIfValid(m_eventListener, m_onCancelEventName);
             gameObject.SetActive(false);
         }
         #endregion

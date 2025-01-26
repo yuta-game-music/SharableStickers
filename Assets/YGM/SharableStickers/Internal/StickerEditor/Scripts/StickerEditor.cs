@@ -68,10 +68,7 @@ namespace YGM.SharableStickers
         internal void Close()
         {
             gameObject.SetActive(false);
-            if (m_eventListener != null && !string.IsNullOrEmpty(m_onCloseEventName))
-            {
-                m_eventListener.SendCustomEvent(m_onCloseEventName);
-            }
+            SendCustomEventIfValid(m_eventListener, m_onCloseEventName);
         }
 
         #region Unity Event
