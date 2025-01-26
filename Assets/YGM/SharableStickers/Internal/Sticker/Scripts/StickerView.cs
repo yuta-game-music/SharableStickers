@@ -8,7 +8,7 @@ using VRC.Udon;
 namespace YGM.SharableStickers
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class StickerView : UdonSharpBehaviour
+    public class StickerView : UdonSharpBehaviourWithUtils
     {
         [SerializeField] private RectTransform m_canvasTransform;
         [SerializeField] private Image m_background;
@@ -21,11 +21,25 @@ namespace YGM.SharableStickers
         internal void SetData(string text, Color color)
         {
             m_content.text = text;
+            m_content.color = GetTextColor(color);
             m_background.color = color;
             m_waitSizeChangeFlag = true;
         }
 
-        public void Update()
+        private Color GetTextColor(Color backgroundColor)
+        {
+            var sum = backgroundColor.r + backgroundColor.g + backgroundColor.b;
+            if (sum < 3f / 2)
+            {
+                return Color.white;
+            }
+            else
+            {
+                return Color.black;
+            }
+        }
+
+        public void LateUpdate()
         {
             if (m_waitSizeChangeFlag)
             {
