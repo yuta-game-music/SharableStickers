@@ -39,11 +39,11 @@ namespace YGM.SharableStickers
             playerObject.SetSticker(stickerId, content, color, position, rotation);
             if (showEditorImmediately)
             {
-                ShowStickerEditorForLocal(stickerId);
+                ShowStickerEditorForLocal(stickerId, StickerEditorViewMode.Move);
             }
         }
 
-        public StickerEditor ShowStickerEditorForLocal(string stickerId)
+        public StickerEditor ShowStickerEditorForLocal(string stickerId, StickerEditorViewMode initialViewMode)
         {
             var playerObject = GetPlayerObject(LocalPlayer);
             if (playerObject == null)
@@ -58,7 +58,8 @@ namespace YGM.SharableStickers
                 sticker.Content,
                 sticker.Color,
                 sticker.Position,
-                sticker.Rotation
+                sticker.Rotation,
+                initialViewMode
             );
         }
 

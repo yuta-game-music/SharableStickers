@@ -22,7 +22,7 @@ namespace YGM.SharableStickers
             m_system = system;
         }
 
-        public StickerEditor FindOrCreateEditor(string stickerId, string content, Color color, Vector3 position, Quaternion rotation)
+        public StickerEditor FindOrCreateEditor(string stickerId, string content, Color color, Vector3 position, Quaternion rotation, StickerEditorViewMode initialViewMode)
         {
             var objectName = GetEditorObjectNameByStickerId(stickerId);
             var tf = m_editorParent.Find(objectName);
@@ -31,7 +31,7 @@ namespace YGM.SharableStickers
                 var editor = tf.GetComponent<StickerEditor>();
                 if (editor != null)
                 {
-                    editor.Setup(stickerId, content, color, position, rotation, m_system, this, nameof(OnCloseEditor));
+                    editor.Setup(stickerId, content, color, position, rotation, m_system, initialViewMode, this, nameof(OnCloseEditor));
                     return editor;
                 }
                 else
@@ -58,7 +58,7 @@ namespace YGM.SharableStickers
 
                 // 使えるモノが見つかったのでこれを使う
                 tf.gameObject.name = objectName;
-                editor.Setup(stickerId, content, color, position, rotation, m_system, this, nameof(OnCloseEditor));
+                editor.Setup(stickerId, content, color, position, rotation, m_system, initialViewMode, this, nameof(OnCloseEditor));
                 return editor;
             }
 
@@ -72,7 +72,7 @@ namespace YGM.SharableStickers
                     return null;
                 }
                 editorGameObject.name = objectName;
-                editor.Setup(stickerId, content, color, position, rotation, m_system, this, nameof(OnCloseEditor));
+                editor.Setup(stickerId, content, color, position, rotation, m_system, initialViewMode, this, nameof(OnCloseEditor));
                 return editor;
             }
         }

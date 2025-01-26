@@ -38,6 +38,7 @@ namespace YGM.SharableStickers
             Vector3 position,
             Quaternion rotation,
             System system,
+            StickerEditorViewMode initialViewMode,
             UdonSharpBehaviour eventListener,
             string onCloseEventName)
         {
@@ -48,6 +49,17 @@ namespace YGM.SharableStickers
             m_inputField.text = m_previousContent = content;
             m_color = m_previousColor = color;
             m_moveController.Setup(m_previousPosition = position, m_previousRotation = rotation);
+            switch (initialViewMode)
+            {
+                case StickerEditorViewMode.Top:
+                    break;
+                case StickerEditorViewMode.ColorPicker:
+                    OnClickColorPicker();
+                    break;
+                case StickerEditorViewMode.Move:
+                    OnClickMove();
+                    break;
+            }
             gameObject.SetActive(true);
         }
 
@@ -117,6 +129,12 @@ namespace YGM.SharableStickers
             Close();
         }
         #endregion
+    }
+    public enum StickerEditorViewMode
+    {
+        Top,
+        Move,
+        ColorPicker
     }
 
 }

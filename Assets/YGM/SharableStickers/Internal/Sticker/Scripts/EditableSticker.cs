@@ -22,7 +22,7 @@ namespace YGM.SharableStickers
         #region Unity Event
         public void OnClickEditButton()
         {
-            m_system.ShowStickerEditorForLocal(StickerId);
+            m_system.ShowStickerEditorForLocal(StickerId, StickerEditorViewMode.Top);
         }
         #endregion
     }
