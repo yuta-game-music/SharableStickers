@@ -52,7 +52,6 @@ namespace YGM.SharableStickers.StickerEditorComponent
         #region Unity Event
         public override void OnPickupUseDown()
         {
-            Log("UseDown");
             if (!m_isInControlMode) return;
             EnterPosition();
             SetActive(false);
@@ -60,7 +59,6 @@ namespace YGM.SharableStickers.StickerEditorComponent
         }
         public override void OnDrop()
         {
-            Log("Drop");
             if (!m_isInControlMode) return;
             RevertPosition();
             SetActive(false);
