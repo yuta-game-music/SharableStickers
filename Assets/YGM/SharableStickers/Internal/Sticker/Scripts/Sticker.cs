@@ -9,7 +9,7 @@ namespace YGM.SharableStickers
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Sticker : UdonSharpBehaviourWithUtils
     {
-        [SerializeField] private StickerView m_stickerView;
+        [SerializeField] protected StickerView m_stickerView;
         private VRCPlayerApi m_owner;
         private bool m_hasOwner; // ダウンロードして生成したStickerはfalseになっている
 

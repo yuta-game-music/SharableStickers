@@ -19,10 +19,25 @@ namespace YGM.SharableStickers
         {
             m_system = system;
         }
+
+        public void OnPlacedByNewStickerButton()
+        {
+            Log("Started edit, adjusting position");
+            m_system.ShowStickerEditorForLocal(StickerId, StickerEditorViewMode.Move, this, nameof(OnFinishEdit));
+        }
+
+        #region StickerEditor Callback
+        public void OnFinishEdit()
+        {
+            Log("Finished edit, resetting position");
+        }
+        #endregion
+
         #region Unity Event
         public void OnClickEditButton()
         {
-            m_system.ShowStickerEditorForLocal(StickerId, StickerEditorViewMode.Top);
+            Log("Started edit, adjusting position");
+            m_system.ShowStickerEditorForLocal(StickerId, StickerEditorViewMode.Top, this, nameof(OnFinishEdit));
         }
         #endregion
     }

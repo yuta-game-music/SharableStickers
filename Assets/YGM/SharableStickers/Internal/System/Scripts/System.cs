@@ -36,14 +36,15 @@ namespace YGM.SharableStickers
                 return;
             }
             var stickerId = m_stickerIdGenerator.Generate();
-            playerObject.SetSticker(stickerId, content, color, position, rotation);
+            var sticker = playerObject.SetSticker(stickerId, content, color, position, rotation);
             if (showEditorImmediately)
             {
-                ShowStickerEditorForLocal(stickerId, StickerEditorViewMode.Move);
+                var editableSticker = sticker.GetComponent<EditableSticker>();
+                editableSticker.OnPlacedByNewStickerButton();
             }
         }
 
-        public StickerEditor ShowStickerEditorForLocal(string stickerId, StickerEditorViewMode initialViewMode)
+        public StickerEditor ShowStickerEditorForLocal(string stickerId, StickerEditorViewMode initialViewMode, UdonSharpBehaviour eventListener, string onCloseEventName)
         {
             var playerObject = GetPlayerObject(LocalPlayer);
             if (playerObject == null)
@@ -59,7 +60,9 @@ namespace YGM.SharableStickers
                 sticker.Color,
                 sticker.Position,
                 sticker.Rotation,
-                initialViewMode
+                initialViewMode,
+                eventListener,
+                onCloseEventName
             );
         }
 

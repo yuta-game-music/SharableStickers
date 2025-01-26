@@ -17,8 +17,10 @@ namespace YGM.SharableStickers
         [SerializeField] private NoEditConfirmDialog m_noEditConfirmDialog;
         private string m_stickerId;
         private System m_system;
-        private UdonSharpBehaviour m_eventListener;
-        private string m_onCloseEventName;
+        private UdonSharpBehaviour m_eventListener1;
+        private string m_onCloseEventName1;
+        private UdonSharpBehaviour m_eventListener2;
+        private string m_onCloseEventName2;
 
         private string m_previousContent;
         private Color m_previousColor;
@@ -39,13 +41,17 @@ namespace YGM.SharableStickers
             Quaternion rotation,
             System system,
             StickerEditorViewMode initialViewMode,
-            UdonSharpBehaviour eventListener,
-            string onCloseEventName)
+            UdonSharpBehaviour eventListener1,
+            string onCloseEventName1,
+            UdonSharpBehaviour eventListener2,
+            string onCloseEventName2)
         {
             m_stickerId = stickerId;
             m_system = system;
-            m_eventListener = eventListener;
-            m_onCloseEventName = onCloseEventName;
+            m_eventListener1 = eventListener1;
+            m_onCloseEventName1 = onCloseEventName1;
+            m_eventListener2 = eventListener2;
+            m_onCloseEventName2 = onCloseEventName2;
             m_inputField.text = m_previousContent = content;
             m_color = m_previousColor = color;
             m_moveController.Setup(m_previousPosition = position, m_previousRotation = rotation);
@@ -89,7 +95,8 @@ namespace YGM.SharableStickers
         internal void Close()
         {
             gameObject.SetActive(false);
-            SendCustomEventIfValid(m_eventListener, m_onCloseEventName);
+            SendCustomEventIfValid(m_eventListener1, m_onCloseEventName1);
+            SendCustomEventIfValid(m_eventListener2, m_onCloseEventName2);
         }
 
         private bool IsEdit()
