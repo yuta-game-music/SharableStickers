@@ -18,7 +18,7 @@ namespace YGM.SharableStickers
 
         [UdonSynced, FieldChangeCallback(nameof(StickerStatus))]
         private string m_stickerStatus;
-        internal string StickerStatus
+        public string StickerStatus
         {
             get => m_stickerStatus;
             set
