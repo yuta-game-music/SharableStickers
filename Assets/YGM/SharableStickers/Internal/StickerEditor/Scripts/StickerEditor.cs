@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon;
+using YGM.SharableStickers.StickerEditorComponent;
 
 namespace YGM.SharableStickers
 {
@@ -12,6 +13,7 @@ namespace YGM.SharableStickers
     {
         [SerializeField] private InputField m_inputField;
         [SerializeField] private ColorPicker m_colorPicker;
+        [SerializeField] private MoveController m_moveController;
         [SerializeField] private NoEditConfirmDialog m_noEditConfirmDialog;
         private string m_stickerId;
         private System m_system;
@@ -26,8 +28,8 @@ namespace YGM.SharableStickers
 
         private string Content => m_inputField.text;
         private Color Color => m_color;
-        private Vector3 Position => transform.position;
-        private Quaternion Rotation => transform.rotation;
+        private Vector3 Position => m_moveController.Position;
+        private Quaternion Rotation => m_moveController.Rotation;
 
         internal void Setup(
             string stickerId,
@@ -45,8 +47,7 @@ namespace YGM.SharableStickers
             m_onCloseEventName = onCloseEventName;
             m_inputField.text = m_previousContent = content;
             m_color = m_previousColor = color;
-            transform.position = m_previousPosition = position;
-            transform.rotation = m_previousRotation = rotation;
+            m_moveController.Setup(m_previousPosition = position, m_previousRotation = rotation);
             gameObject.SetActive(true);
         }
 
@@ -103,6 +104,11 @@ namespace YGM.SharableStickers
         {
             m_colorPicker.Setup(m_color, this, nameof(OnEnterColor), nameof(OnCancelColorPicker));
             m_colorPicker.gameObject.SetActive(true);
+        }
+
+        public void OnClickMove()
+        {
+            m_moveController.StartMoveMode();
         }
 
         public void OnClickEnter()
