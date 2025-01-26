@@ -9,6 +9,7 @@ namespace YGM.SharableStickers
     {
         protected VRCPlayerApi LocalPlayer => Networking.LocalPlayer;
         protected VRCPlayerApi ObjectOwner => Networking.GetOwner(gameObject);
+        protected bool IsLocalObject => LocalPlayer.playerId == ObjectOwner.playerId;
         protected void Log(string text)
         {
             var localPlayerId = GetPlayerId(Networking.LocalPlayer);

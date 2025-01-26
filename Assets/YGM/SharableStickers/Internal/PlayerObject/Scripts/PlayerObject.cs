@@ -9,10 +9,12 @@ namespace YGM.SharableStickers
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class PlayerObject : UdonSharpBehaviourWithUtils
     {
-        [SerializeField] private Sticker m_stickerPrefab;
+        [SerializeField] private EditableSticker m_localStickerPrefab;
+        [SerializeField] private Sticker m_othersStickerPrefab;
         [SerializeField] private Transform m_stickerParent;
         [SerializeField] private PlayerDataSerializer m_serializer;
         [SerializeField] private PlayerDataDeserializer m_deserializer;
+        [SerializeField] System m_system;
 
         [UdonSynced, FieldChangeCallback(nameof(StickerStatus))]
         private string m_stickerStatus;
@@ -25,6 +27,8 @@ namespace YGM.SharableStickers
                 UpdateStickers();
             }
         }
+
+        private Sticker StickerPrefab => IsLocalObject ? m_localStickerPrefab : m_othersStickerPrefab;
 
         internal void SetStickerStatus(string stickerStatus)
         {
@@ -67,7 +71,7 @@ namespace YGM.SharableStickers
         private void UpdateStickers()
         {
             Log("Updated Sticker Status Text (Receive): " + m_stickerStatus);
-            m_deserializer.Deserialize(m_stickerStatus, m_stickerParent, m_stickerPrefab);
+            m_deserializer.Deserialize(m_stickerStatus, m_stickerParent, StickerPrefab, m_system);
         }
 
         internal Sticker FindOrGenerateSticker(string stickerId)
@@ -78,10 +82,18 @@ namespace YGM.SharableStickers
                 return sticker;
             }
             // 生成
-            var stickerGameObject = Instantiate(m_stickerPrefab.gameObject, m_stickerParent, false);
+            var stickerGameObject = Instantiate(StickerPrefab.gameObject, m_stickerParent, false);
             stickerGameObject.name = name;
             sticker = stickerGameObject.GetComponent<Sticker>();
             sticker.SetupAsLocal(ObjectOwner, stickerId, "", Color.white);
+            if (IsLocalObject)
+            {
+                var editableSticker = stickerGameObject.GetComponent<EditableSticker>();
+                if (editableSticker != null)
+                {
+                    editableSticker.SetupAsEditable(m_system);
+                }
+            }
             return sticker;
         }
 

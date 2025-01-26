@@ -11,7 +11,7 @@ namespace YGM.SharableStickers
     public class PlayerDataDeserializer : UdonSharpBehaviourWithUtils
     {
         [SerializeField] private PlayerHashGenerator m_playerHashGenerator;
-        public bool Deserialize(string text, Transform stickerParent, Sticker stickerPrefab)
+        public bool Deserialize(string text, Transform stickerParent, Sticker stickerPrefab, System system)
         {
             var succeeded = VRCJson.TryDeserializeFromJson(text, out var token);
             if (!succeeded)
@@ -35,12 +35,12 @@ namespace YGM.SharableStickers
             switch ((int)versionToken.Number)
             {
                 case 1:
-                    return DeserializeV1(token, stickerParent, stickerPrefab);
+                    return DeserializeV1(token, stickerParent, stickerPrefab, system);
             }
             return false;
         }
 
-        private bool DeserializeV1(DataToken data, Transform stickerParent, Sticker stickerPrefab)
+        private bool DeserializeV1(DataToken data, Transform stickerParent, Sticker stickerPrefab, System system)
         {
             // プレイヤー名検証
             var playerHashFetchSucceeded = data.DataDictionary.TryGetValue("user", TokenType.String, out var playerHashToken);
@@ -150,6 +150,13 @@ namespace YGM.SharableStickers
                         return false;
                     }
                     stickerComponent.SetupAsLocal(ObjectOwner, stickerId, stickerContent, stickerColor);
+
+                    var editableStickerComponent = newStickerGameObject.GetComponent<EditableSticker>();
+                    if (editableStickerComponent != null)
+                    {
+                        // ローカルオブジェクトの場合、Editableとしてのセットアップも必要
+                        editableStickerComponent.SetupAsEditable(system);
+                    }
                 }
             }
 

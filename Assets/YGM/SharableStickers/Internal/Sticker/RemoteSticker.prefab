@@ -403,7 +403,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6729458037209255673}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: SendCustomEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5377515675531276072
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &136589632208749786
 RectTransform:
   m_ObjectHideFlags: 0
@@ -622,10 +634,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7034607122431978822}
-  - component: {fileID: 3960129297016919756}
-  - component: {fileID: 5507538179750715161}
+  - component: {fileID: 781561336905329094}
+  - component: {fileID: 7276028046006522517}
   m_Layer: 0
-  m_Name: Sticker
+  m_Name: RemoteSticker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -647,7 +659,7 @@ Transform:
   - {fileID: 8946693765472674588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3960129297016919756
+--- !u!114 &781561336905329094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -668,9 +680,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _udonSharpBackingUdonBehaviour: {fileID: 5507538179750715161}
+  _udonSharpBackingUdonBehaviour: {fileID: 7276028046006522517}
   m_stickerView: {fileID: 390953044339978664}
---- !u!114 &5507538179750715161
+--- !u!114 &7276028046006522517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -689,7 +701,7 @@ MonoBehaviour:
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0
-  _syncMethod: 2
+  _syncMethod: 0
   serializedProgramAsset: {fileID: 11400000, guid: a8f651bf57ff36c4fb5e3eb7af43c2f9,
     type: 2}
   programSource: {fileID: 11400000, guid: f021f4756c94f94459249eb3ae72d396, type: 2}

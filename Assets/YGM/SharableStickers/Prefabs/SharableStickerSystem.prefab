@@ -639,11 +639,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5206738373577469049}
     m_Modifications:
+    - target: {fileID: 1038264602990867209, guid: 86de37a2201553e4a945dbcaf3cb58cb,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1038264602990867209, guid: 86de37a2201553e4a945dbcaf3cb58cb,
+        type: 3}
     - target: {fileID: 2311621734701190102, guid: 86de37a2201553e4a945dbcaf3cb58cb,
         type: 3}
       propertyPath: m_Name
       value: PlayerObject
       objectReference: {fileID: 0}
+    - target: {fileID: 3832059332608351363, guid: 86de37a2201553e4a945dbcaf3cb58cb,
+        type: 3}
+      propertyPath: m_system
+      value: 
+      objectReference: {fileID: 3849132979318495264}
     - target: {fileID: 3832059332608351363, guid: 86de37a2201553e4a945dbcaf3cb58cb,
         type: 3}
       propertyPath: m_serializer
