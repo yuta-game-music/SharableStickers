@@ -1751,7 +1751,7 @@ GameObject:
   - component: {fileID: 4603745279032026553}
   - component: {fileID: 7404840103107736263}
   m_Layer: 0
-  m_Name: EditSticker
+  m_Name: StickerEditor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

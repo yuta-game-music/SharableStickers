@@ -15,6 +15,8 @@ namespace YGM.SharableStickers
         [SerializeField] private NoEditConfirmDialog m_noEditConfirmDialog;
         private string m_stickerId;
         private System m_system;
+        private UdonSharpBehaviour m_eventListener;
+        private string m_onCloseEventName;
 
         private string m_previousContent;
         private Color m_previousColor;
@@ -23,10 +25,18 @@ namespace YGM.SharableStickers
         private string Content => m_inputField.text;
         private Color Color => m_color;
 
-        internal void Setup(string stickerId, string content, Color color, System system)
+        internal void Setup(
+            string stickerId,
+            string content,
+            Color color,
+            System system,
+            UdonSharpBehaviour eventListener,
+            string onCloseEventName)
         {
             m_stickerId = stickerId;
             m_system = system;
+            m_eventListener = eventListener;
+            m_onCloseEventName = onCloseEventName;
             m_inputField.text = m_previousContent = content;
             m_color = m_previousColor = color;
             gameObject.SetActive(true);
@@ -58,6 +68,10 @@ namespace YGM.SharableStickers
         internal void Close()
         {
             gameObject.SetActive(false);
+            if (m_eventListener != null && !string.IsNullOrEmpty(m_onCloseEventName))
+            {
+                m_eventListener.SendCustomEvent(m_onCloseEventName);
+            }
         }
 
         #region Unity Event

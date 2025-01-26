@@ -11,9 +11,14 @@ namespace YGM.SharableStickers
         [SerializeField] private ControlPanel m_controlPanel;
         [SerializeField] private PlayerObject m_playerObjectTemplate;
         [SerializeField] private StickerIdGenerator m_stickerIdGenerator;
-        [SerializeField] private StickerEditor m_stickerEditor;
+        [SerializeField] private StickerEditorManager m_stickerEditorManager;
 
         public const string PersistenceSaveKey = "SharableStickers_LocalStickers";
+
+        public void Start()
+        {
+            m_stickerEditorManager.Setup(this);
+        }
 
         public PlayerObject GetPlayerObject(VRCPlayerApi player)
         {
@@ -43,15 +48,11 @@ namespace YGM.SharableStickers
             }
             var sticker = playerObject.FindOrGenerateSticker(stickerId);
 
-            var stickerEditorGameObject = Instantiate(m_stickerEditor.gameObject, transform, false);
-            var stickerEditor = stickerEditorGameObject.GetComponent<StickerEditor>();
-            stickerEditor.Setup(
+            return m_stickerEditorManager.FindOrCreateEditor(
                 stickerId,
                 sticker.Content,
-                sticker.Color,
-                this
+                sticker.Color
             );
-            return stickerEditor;
         }
 
         public void UpdateLocalSticker(string stickerId, string content, Color color)

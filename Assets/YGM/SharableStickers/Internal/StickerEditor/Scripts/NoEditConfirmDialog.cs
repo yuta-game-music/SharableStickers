@@ -12,7 +12,7 @@ namespace YGM.SharableStickers
         {
             Show(
                 "編集を終了しますか？\n※変更内容は保存されません！",
-                "終了",
+                "変更を破棄して終了",
                 "続ける",
                 eventListener,
                 onYesEventName,
