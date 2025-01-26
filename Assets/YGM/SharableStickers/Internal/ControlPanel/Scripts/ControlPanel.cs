@@ -15,7 +15,7 @@ namespace YGM.SharableStickers
         public void OnClickAddSticker()
         {
             var randomColor = Random.ColorHSV(0, 1, 0.7f, 0.7f, 0.8f, 0.8f, 0.7f, 0.7f);
-            m_system.AddNewLocalSticker("", randomColor, m_newStickerPosition.position, m_newStickerPosition.rotation);
+            m_system.AddNewLocalSticker("", randomColor, m_newStickerPosition.position, m_newStickerPosition.rotation, true);
         }
         #endregion
     }

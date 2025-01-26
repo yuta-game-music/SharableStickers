@@ -27,7 +27,7 @@ namespace YGM.SharableStickers
             return (PlayerObject)component;
         }
 
-        public void AddNewLocalSticker(string content, Color color, Vector3 position, Quaternion rotation)
+        public void AddNewLocalSticker(string content, Color color, Vector3 position, Quaternion rotation, bool showEditorImmediately)
         {
             var playerObject = GetPlayerObject(LocalPlayer);
             if (playerObject == null)
@@ -35,7 +35,12 @@ namespace YGM.SharableStickers
                 Log("Cannot find PlayerObject!");
                 return;
             }
-            playerObject.SetSticker(m_stickerIdGenerator.Generate(), content, color, position, rotation);
+            var stickerId = m_stickerIdGenerator.Generate();
+            playerObject.SetSticker(stickerId, content, color, position, rotation);
+            if (showEditorImmediately)
+            {
+                ShowStickerEditorForLocal(stickerId);
+            }
         }
 
         public StickerEditor ShowStickerEditorForLocal(string stickerId)
