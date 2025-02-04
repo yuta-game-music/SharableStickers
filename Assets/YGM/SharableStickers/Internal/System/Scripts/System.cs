@@ -12,8 +12,11 @@ namespace YGM.SharableStickers
         [SerializeField] private PlayerObject m_playerObjectTemplate;
         [SerializeField] private StickerIdGenerator m_stickerIdGenerator;
         [SerializeField] private StickerEditorManager m_stickerEditorManager;
+        [SerializeField] private EventHandler m_viewModeChangeEventHandler;
 
         public const string PersistenceSaveKey = "SharableStickers_LocalStickers";
+        private ViewMode m_currentViewMode = ViewMode.Viewer;
+        public ViewMode CurrentViewMode => m_currentViewMode;
 
         public void Start()
         {
@@ -77,6 +80,20 @@ namespace YGM.SharableStickers
             playerObject.SetSticker(stickerId, content, color, position, rotation);
         }
 
+        public void SetViewMode(ViewMode viewMode)
+        {
+            if (m_currentViewMode == viewMode)
+            {
+                return;
+            }
+            m_currentViewMode = viewMode;
+            m_viewModeChangeEventHandler.Invoke();
+        }
+        public void RegisterViewModeChangeEventHandler(UdonSharpBehaviour eventHandler, string eventName)
+        {
+            m_viewModeChangeEventHandler.RegisterEventHandler(eventHandler, eventName);
+        }
+
         #region VRChat Events
         public override void OnPlayerRestored(VRCPlayerApi player)
         {
@@ -94,5 +111,11 @@ namespace YGM.SharableStickers
             }
         }
         #endregion
+    }
+
+    public enum ViewMode
+    {
+        Viewer,
+        Edit,
     }
 }
