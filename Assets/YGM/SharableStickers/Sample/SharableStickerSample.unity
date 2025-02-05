@@ -801,6 +801,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1590846636023994669, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
+    - target: {fileID: 1642124977532719641, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1824949360485467716, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: _syncMethod
@@ -987,6 +992,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SharableStickerSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 5182671902913449667, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5182671902913449667, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
     - target: {fileID: 5398621030734487193, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: _syncMethod

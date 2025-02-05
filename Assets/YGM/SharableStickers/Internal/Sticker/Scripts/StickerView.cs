@@ -24,6 +24,7 @@ namespace YGM.SharableStickers
         public void Start()
         {
             m_system.RegisterViewModeChangeEventHandler(this, nameof(OnViewModeChanged));
+            UpdateViewModeSpecificObjects();
         }
 
         private bool m_waitSizeChangeFlag = false;
@@ -73,8 +74,7 @@ namespace YGM.SharableStickers
             m_mainCanvasGroup.blocksRaycasts = visible;
         }
 
-        #region Event Listener
-        public void OnViewModeChanged()
+        private void UpdateViewModeSpecificObjects()
         {
             var mode = m_system.CurrentViewMode;
             foreach (var viewModeObject in m_gameObjectsForViewMode)
@@ -87,6 +87,12 @@ namespace YGM.SharableStickers
                 if (editModeObject == null) continue;
                 editModeObject.SetActive(mode == ViewMode.Edit);
             }
+        }
+
+        #region Event Listener
+        public void OnViewModeChanged()
+        {
+            UpdateViewModeSpecificObjects();
         }
         #endregion
     }
