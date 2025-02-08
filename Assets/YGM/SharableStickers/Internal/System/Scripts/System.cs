@@ -8,14 +8,14 @@ namespace YGM.SharableStickers
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class System : UdonSharpBehaviourWithUtils
     {
-        [SerializeField] private ControlPanel m_controlPanel;
+        [SerializeField] private ControlPanel.System m_controlPanel;
         [SerializeField] private PlayerObject m_playerObjectTemplate;
         [SerializeField] private StickerIdGenerator m_stickerIdGenerator;
         [SerializeField] private StickerEditorManager m_stickerEditorManager;
         [SerializeField] private EventHandler m_viewModeChangeEventHandler;
 
         public const string PersistenceSaveKey = "SharableStickers_LocalStickers";
-        private ViewMode m_currentViewMode = ViewMode.Viewer;
+        private ViewMode m_currentViewMode = ViewMode.ReadOnly;
         public ViewMode CurrentViewMode => m_currentViewMode;
 
         public void Start()
@@ -115,7 +115,7 @@ namespace YGM.SharableStickers
 
     public enum ViewMode
     {
-        Viewer,
+        ReadOnly,
         Edit,
     }
 }

@@ -646,10 +646,6 @@ MonoBehaviour:
   RenderReflectionIntensity: 0
   RenderSkybox: {fileID: 0}
   NetworkIDs:
-  - gameObject: {fileID: 1790946376}
-    ID: 10
-    SerializedTypeNames:
-    - VRC.Udon.UdonBehaviour
   - gameObject: {fileID: 1066346139}
     ID: 11
     SerializedTypeNames:
@@ -719,6 +715,11 @@ MonoBehaviour:
     ID: 17
     SerializedTypeNames:
     - VRC.Udon.UdonBehaviour
+  - gameObject: {fileID: 1790946376}
+    ID: 10
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
+    - VRC.Udon.UdonBehaviour
   portraitCameraPositionOffset: {x: 0, y: 0, z: 0}
   portraitCameraRotationOffset: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   PlayerPersistence: []
@@ -762,6 +763,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 300492717508515305, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
+    - target: {fileID: 378167054043812276, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 378167054043812276, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
     - target: {fileID: 391470409916141598, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -789,6 +796,12 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 989176013363434570, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+    - target: {fileID: 1506140322496601373, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1506140322496601373, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
     - target: {fileID: 1517898936026072764, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
@@ -844,11 +857,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2447882718185776697, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
+    - target: {fileID: 2538392382007218634, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3058564732455815142, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: _syncMethod
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3112265943159333513, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3112265943159333513, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
     - target: {fileID: 3209627059262034194, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -982,6 +1006,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4478924166788448148, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
+    - target: {fileID: 4689341910890359550, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4689341910890359550, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
     - target: {fileID: 4724293650944968779, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
       propertyPath: _syncMethod
@@ -991,6 +1021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SharableStickerSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992597541562687478, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5182671902913449667, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}
@@ -1052,6 +1087,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _syncMethod
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6756284355837001580, guid: 0e45337129ce0224e814ffe7bd439097,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7107794467713734510, guid: 0e45337129ce0224e814ffe7bd439097,
         type: 3}

@@ -80,7 +80,7 @@ namespace YGM.SharableStickers
             foreach (var viewModeObject in m_gameObjectsForViewMode)
             {
                 if (viewModeObject == null) continue;
-                viewModeObject.SetActive(mode == ViewMode.Viewer);
+                viewModeObject.SetActive(mode == ViewMode.ReadOnly);
             }
             foreach (var editModeObject in m_gameObjectsForEditMode)
             {

@@ -4,13 +4,18 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-namespace YGM.SharableStickers
+namespace YGM.SharableStickers.ControlPanel
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class ControlPanel : UdonSharpBehaviourWithUtils
+    public class System : UdonSharpBehaviourWithUtils
     {
-        [SerializeField] private System m_system;
+        [SerializeField] private SharableStickers.System m_system;
+        [SerializeField] private ViewModeController m_viewModeController;
         [SerializeField] private Transform m_newStickerPosition;
+        public void Start()
+        {
+            m_viewModeController.Setup(m_system);
+        }
         #region Unity Event
         public void OnClickAddSticker()
         {
