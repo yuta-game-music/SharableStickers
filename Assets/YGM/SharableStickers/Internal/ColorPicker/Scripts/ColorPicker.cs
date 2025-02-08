@@ -41,7 +41,6 @@ namespace YGM.SharableStickers
         public void OnValueUpdated()
         {
             m_color = new Color(m_redSlider.Value, m_greenSlider.Value, m_blueSlider.Value, m_alphaSlider.Value);
-            Log($"UpdatePreviewersColor({m_color})");
             m_previewer.color = m_color;
         }
         #endregion
