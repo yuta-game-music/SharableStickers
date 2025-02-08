@@ -33,6 +33,18 @@ namespace YGM.SharableStickers.ControlPanel
                 m_buttonBackground.color = isSelected ? m_selectedColor : m_normalColor;
             }
         }
+
+        #region Unity Event
+        public void OnSelect()
+        {
+            if (m_system == null)
+            {
+                Log("System not set!");
+                return;
+            }
+            m_system.SetViewMode(m_viewMode);
+        }
+        #endregion
     }
 
 }

@@ -1099,11 +1099,6 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u7DE8\u96C6\n\u30E2\u30FC\u30C9"
       objectReference: {fileID: 0}
-    - target: {fileID: 1995399103619428029, guid: bacb76b47f765614f9b3ce281c913980,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6040392400799546680}
     - target: {fileID: 5582322811263585855, guid: bacb76b47f765614f9b3ce281c913980,
         type: 3}
       propertyPath: m_viewMode
@@ -1251,11 +1246,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1995399103619428029, guid: bacb76b47f765614f9b3ce281c913980,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6040392400799546680}
     - target: {fileID: 5582322811263585855, guid: bacb76b47f765614f9b3ce281c913980,
         type: 3}
       propertyPath: m_viewMode
