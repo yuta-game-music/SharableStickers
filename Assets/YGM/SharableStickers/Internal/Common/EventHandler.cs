@@ -24,7 +24,7 @@ namespace YGM.SharableStickers
                 var prevNames = m_eventNames;
                 m_eventHandlers = new UdonSharpBehaviour[m_eventCount + BulkInsertCount];
                 m_eventNames = new string[m_eventCount + BulkInsertCount];
-                for (var i = 0; i < m_eventHandlers.Length; i++)
+                for (var i = 0; i < prevHandlers.Length; i++)
                 {
                     m_eventHandlers[i] = prevHandlers[i];
                     m_eventNames[i] = prevNames[i];
