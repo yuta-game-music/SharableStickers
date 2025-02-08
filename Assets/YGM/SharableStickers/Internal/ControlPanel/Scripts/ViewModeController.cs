@@ -13,6 +13,11 @@ namespace YGM.SharableStickers.ControlPanel
         [SerializeField] private ViewModeItem[] m_items;
         public void Setup(SharableStickers.System system)
         {
+            foreach (var item in m_items)
+            {
+                if (item == null) continue;
+                item.Setup(system);
+            }
             system.RegisterViewModeChangeEventHandler(this, nameof(UpdateView));
             UpdateView();
         }
